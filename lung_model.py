@@ -8,7 +8,7 @@ warnings.filterwarnings("ignore")
 # Loading the saved model
 model = pk.load(open('lung_cancer.sav', 'rb'))
 
-# Custom CSS for styling, including background image and button centering
+# Custom CSS for enhanced styling
 st.markdown("""
     <style>
     body {
@@ -54,6 +54,26 @@ st.markdown("""
         justify-content: center;
         align-items: center;
         margin-top: 20px;
+    }
+    .stTextInput > div {
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    .stSelectbox > div {
+        border: 2px solid #4CAF50;
+        border-radius: 8px;
+        padding: 5px;
+        margin-bottom: 10px;
+    }
+    .result-box {
+        border: 2px solid #4CAF50;
+        padding: 20px;
+        margin-top: 20px;
+        border-radius: 10px;
+        background-color: rgba(0, 0, 0, 0.5);
+        text-align: center;
     }
     </style>
 """, unsafe_allow_html=True)
@@ -123,8 +143,12 @@ if st.button('**🚀 Lung Cancer Predict Result**'):
         Predict_diagnosis = 'The person has lung cancer'
         result_color = "red"
 
-    # Display the result with color
-    st.markdown(f"<h3 style='color: {result_color};'>{Predict_diagnosis}</h3>", unsafe_allow_html=True)
+    # Display the result with color and border
+    st.markdown(f"""
+        <div class='result-box'>
+        <h3 style='color: {result_color};'>{Predict_diagnosis}</h3>
+        </div>
+    """, unsafe_allow_html=True)
     st.balloons()  # Balloon effect after prediction
 
 st.markdown("</div>", unsafe_allow_html=True)
